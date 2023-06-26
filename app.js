@@ -77,7 +77,7 @@ app.put("/players/:playerId/", async (request, response) => {
      role='${role}' 
     where player_id=${playerId};`;
   await db.run(updatePlayerQuery);
-  response.send("Player Details Updated");
+  response.send("Player  Details  Updated");
 });
 //Deletes a player from the team (database) based on the player ID
 app.delete("/players/:playerId/", async (request, response) => {
@@ -86,6 +86,6 @@ app.delete("/players/:playerId/", async (request, response) => {
   const deletePlayerQuery = `delete from cricket_team 
     where player_id=${playerId};`;
   await db.run(deletePlayerQuery);
-  response.send("Player Removed");
+  response.send("Player  Removed");
 });
 module.exports = app;
