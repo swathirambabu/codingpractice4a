@@ -68,14 +68,14 @@ app.post("/players/", async (request, response) => {
 
 //Updates the details of a player in the team (database) based on the player ID
 app.put("/players/:playerId/", async (request, response) => {
-  const { playerId } = request.params;
   const { playerName, jerseyNumber, role } = request.body;
-
-  const updatePlayerQuery = `UPDATE cricket_team SET 
-     player_name=${playerName},
-     jersey_number='${jerseyNumber},
-     role='${role}' 
-    where player_id=${playerId};`;
+  const { playerId } = request.params;
+  const updatePlayerQuery = ` UPDATE cricket_team SET 
+   player_name='${playerName}',
+   jersey_number='${jerseyNumber},
+   role='${role}' 
+   where
+   player_id=${playerId};`;
   await db.run(updatePlayerQuery);
   response.send("Player Details Updated");
 });
