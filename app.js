@@ -47,7 +47,7 @@ app.get("/players/", async (request, response) => {
 app.get("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
 
-  const getPlayerQuery = `select * from cricket_team where player_id={playerId};`;
+  const getPlayerQuery = `select * from cricket_team where player_id=${playerId};`;
   const player = await db.get(getPlayerQuery);
   response.send(convertDBObjectToResponseObject(player));
 });
@@ -83,7 +83,7 @@ app.put("/players/:playerId/", async (request, response) => {
 app.delete("/players/:playerId/", async (request, response) => {
   const { playerId } = request.params;
 
-  const deletePlayerQuery = `delete  from cricket_team 
+  const deletePlayerQuery = `delete from cricket_team 
     where player_id=${playerId};`;
   await db.run(deletePlayerQuery);
   response.send("Player Removed");
